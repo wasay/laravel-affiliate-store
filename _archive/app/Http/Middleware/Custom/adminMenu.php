@@ -4,7 +4,7 @@ namespace App\Http\Middleware\Custom;
 
 use Closure;
 use Menu;
-use Caffeinated\Menus\Builder;
+//use Caffeinated\Menus\Builder;
 
 class adminMenu
 {
