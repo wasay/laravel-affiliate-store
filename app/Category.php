@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Sluggable\HasSlug;
-use Spatie\Sluggable\SlugOptions;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Category extends Model
 {
-    use SoftDeletes, HasSlug;
+    use SoftDeletes, Sluggable;
     /**
      * The attributes that are mass assignable.
      *
@@ -25,13 +24,17 @@ class Category extends Model
       return $this->belongsToMany('App\Product');
     }
 
-    /**
-     * Get the options for generating the slug.
-     */
-    public function getSlugOptions() : SlugOptions
-    {
-      return SlugOptions::create()
-        ->generateSlugsFrom('name')
-        ->saveSlugsTo('slug');
-    }
+	/**
+	 * Return the sluggable configuration array for this model.
+	 *
+	 * @return array
+	 */
+	public function sluggable()
+	{
+		return [
+			'slug' => [
+				'source' => 'title'
+			]
+		];
+	}
 }

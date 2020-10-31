@@ -124,7 +124,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        str_slug(env('APP_NAME', 'laravel'), '_').'_session'
+	    preg_replace('/[^a-z]+/i', '_'.'_session', env('APP_NAME', 'laravel'))
     ),
 
     /*

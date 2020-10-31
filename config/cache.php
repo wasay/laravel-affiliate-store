@@ -88,7 +88,7 @@ return [
 
     'prefix' => env(
         'CACHE_PREFIX',
-        str_slug(env('APP_NAME', 'laravel'), '_').'_cache'
+		preg_replace('/[^a-z]+/i', '_'.'_cache', env('APP_NAME', 'laravel'))
     ),
 
 ];

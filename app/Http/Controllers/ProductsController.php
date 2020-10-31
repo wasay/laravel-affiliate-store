@@ -15,6 +15,7 @@ class ProductsController extends ApplicationController
 
 
   public function index(){
+	  $products = Product::all()->shuffle();
     return view('pages.products.index',compact('products'));
   }
 
